@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TogetherStep — medium-fidelity prototype</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="facil" id="facil">
+  <strong>TogetherStep · medium-fidelity prototype</strong>
+  <span class="facil-sep"></span>
+  <span>Start a task flow:</span>
+  <button data-facil="flow:simple">1 Simple</button>
+  <button data-facil="flow:moderate">2 Moderate</button>
+  <button data-facil="flow:complex">3 Complex</button>
+  <span class="facil-sep"></span>
+  <button data-facil="event:bank-sms" title="Simulates a private SMS arriving on Mom's phone">Simulate bank SMS</button>
+  <label><input type="checkbox" id="partnerToggle"> Auto-play the other phone</label>
+  <button data-facil="reset">Reset</button>
+</header>
+<main class="stage" id="stage">
+  <section class="device" data-role="elder">
+    <h2 class="device-label">Mom's phone · older adult</h2>
+    <div class="phone" id="phone-elder" aria-label="Mom's phone"></div>
+  </section>
+  <section class="device" data-role="helper">
+    <h2 class="device-label">Xiaoyu's phone · family helper</h2>
+    <div class="phone" id="phone-helper" aria-label="Xiaoyu's phone"></div>
+  </section>
+</main>
+<p class="foot">Simulated prototype: calls, screen sharing, notifications and the Community Clinic app are hard-coded. See prototype/README.md.</p>
+<script src="app.js"></script>
+</body>
+</html>

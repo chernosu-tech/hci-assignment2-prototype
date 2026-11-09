@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TogetherStep — Low-fidelity paper prototype</title>
+<link rel="stylesheet" href="lofi.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter>
+</svg>
+<header class="facil" id="facil">
+  <strong>TogetherStep — low-fidelity paper prototype</strong>
+  <span class="facil-note">Facilitator panel (not part of the design).</span>
+  <button data-facil="reset">Reset</button>
+  <button data-facil="event:bank-sms">Simulate: bank SMS arrives</button>
+  <label><input type="checkbox" id="partnerToggle"> Auto-play the other role</label>
+</header>
+<main class="stage" id="stage">
+  <section class="device" data-role="elder">
+    <h2 class="device-label">Mom's phone (older adult)</h2>
+    <div class="phone" id="phone-elder"></div>
+  </section>
+  <section class="device" data-role="helper">
+    <h2 class="device-label">Xiaoyu's phone (helper)</h2>
+    <div class="phone" id="phone-helper"></div>
+  </section>
+</main>
+<script src="lofi.js"></script>
+</body>
+</html>
