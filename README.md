@@ -2,13 +2,13 @@
 
 **TogetherStep (陪你走一步)** is a mobile app concept that lets an older adult get help with an unfamiliar phone screen from a family member *without handing over control*. The older adult shares only the one app she chooses; the helper points at the next button and explains what it will do; the older adult taps it herself; private notifications pause sharing automatically; and a short, optional recap helps her do it alone next time.
 
-This folder contains the interactive **high-fidelity prototype** built for CSC5056 / CSC4130 / AIR5064 *Introduction to Human-Computer Interaction* (CUHK-Shenzhen, Fall 2026), Assignment 2, by Graduate Team 7: Ma Xinyu, Ma Xueyi, Su Shaozhi, Tang Shiyuan and Zhang Shuo. It simulates the experience; there is no real screen sharing, calling or backend.
+This folder contains the interactive **high-fidelity prototype** built for CSC5056 / CSC4130 / AIR5064 *Introduction to Human-Computer Interaction* (CUHK-Shenzhen), Assignment 2, by Graduate Team 7: Ma Xinyu, Ma Xueyi, Su Shaozhi, Tang Shiyuan and Zhang Shuo. It simulates the experience; there is no real screen sharing, calling or backend.
 
 | | |
 | --- | --- |
 | **Live prototype** | [https://chernosu-tech.github.io/hci-assignment2-prototype/hi-fi/](https://chernosu-tech.github.io/hci-assignment2-prototype/hi-fi/) |
 | **Design link** | [https://chernosu-tech.github.io/hci-assignment2-prototype/screens/index.html](https://chernosu-tech.github.io/hci-assignment2-prototype/screens/index.html) — exported screens of every key state ([`screens/`](screens/)) and the Figma build specification ([`figma-build-spec.json`](figma-build-spec.json)) |
-| **Earlier versions** | [`low-fi/`](low-fi/index.html) (paper-style, tested with two simulated users) · [`mid-fi/`](mid-fi/index.html) (frozen for heuristic evaluation, commit `075fcc6`) · [`hi-fi/`](hi-fi/index.html) (final) |
+| **Earlier versions** | [`low-fi/`](low-fi/index.html) (paper-style, tested with two simulated users; two prototype defects fixed after testing) · [`mid-fi/`](mid-fi/index.html) (frozen for heuristic evaluation, commit `075fcc6`) · [`hi-fi/`](hi-fi/index.html) (final) |
 
 ---
 
@@ -97,7 +97,7 @@ Alternatives: **Resume sharing** at step 1 continues the session; tapping **Mic 
 
 ### How the prototype was built
 
-- **Design process:** two alternative directions with ten annotated sketches → selected design → three storyboards → clickable paper-style prototype tested with two AI-simulated users (Think Aloud) → medium-fidelity prototype → five independent heuristic-evaluation passes (H1–H12, 49 consolidated violations) → this high-fidelity prototype, which addresses all 16 major (severity 3–4) violations — 15 fully and one partly, because a booking-cancel function belongs to the third-party clinic app — and all minor ones (see `../evaluation/iteration-table.csv`).
+- **Design process:** two alternative directions with ten annotated sketches → selected design → three storyboards → clickable paper-style prototype tested with two AI-simulated users (Think Aloud) → medium-fidelity prototype → five independent analysis perspectives (H1–H12, 49 consolidated violations) → this high-fidelity prototype, which addresses all 16 major (severity 3–4) violations — 15 fully and one partly, because a booking-cancel function belongs to the third-party clinic app — and all minor ones (see `../evaluation/iteration-table.csv`).
 - **Technology:** plain HTML, CSS and JavaScript in three files (`index.html`, `app.css`, `app.js`), no framework or build step. One state object drives both phones, so an action on one phone immediately updates the other, as in a real shared session. State is saved in `localStorage` so a review can be resumed.
 - **Design system:** iOS-sized frame and type scale (body 17 pt, instructions 21 pt, titles 32 pt), colour tokens with measured WCAG contrast, primary and safety controls of at least 48 pt and all other controls of at least 44 pt (except two links in the scaled-down copy of Mom's screen on Xiaoyu's phone, 43 pt, which get a larger hit area in point mode), and consistent components (buttons, sheets, alerts, banners, sharing bar). Tokens and components are listed in [`screen-inventory.md`](screen-inventory.md) and [`figma-build-spec.json`](figma-build-spec.json).
 - **Tooling:** Python + Playwright scripts drive the prototype for automated walkthroughs, screen exports (`../scripts/capture_screens.py`), the measured accessibility audit (`../scripts/a11y_audit.py`) and the demo video (`../video/build_video.py`). Illustrations and the initial sketches were generated with an AI image tool.
@@ -156,4 +156,4 @@ Alternatives: **Resume sharing** at step 1 continues the session; tapping **Mic 
 - Plain language without technical terms; the helper must explain the *result* of a step, not only where to tap; the explanation can be read aloud.
 - Buttons have text labels; decorative illustrations use empty `alt` text.
 
-**Known accessibility gaps:** no real screen-reader testing was performed; the browser prototype does not support Dynamic Type scaling or system dark mode; the measured audit (`../process-materials/heuristic-evaluation/accessibility-audit.md`) lists remaining items.
+**Known accessibility gaps:** no real screen-reader testing was performed; the browser prototype does not support Dynamic Type scaling or system dark mode; the measured audits `../process-materials/03-heuristic-evaluation/accessibility-audit-mid-fidelity.md` and `../process-materials/04-interactive-high-fidelity-prototyping/accessibility-audit-high-fidelity.md` list remaining items.

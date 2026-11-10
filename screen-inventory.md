@@ -1,12 +1,10 @@
 # Screen Inventory and Design Tokens — TogetherStep
 
-- **Stage:** 1 (planned) → 3/4 (built as mid-fi) — lane C, Prototype & Interaction
-- **Prepared:** 2026-11-09
-- **Target device:** smartphone, 393×852 pt (iPhone 15/16 class), iOS conventions ([`../process-materials/decision-log.md`](../process-materials/decision-log.md) D-04)
+- **Target device:** smartphone, 393×852 pt (iPhone 15/16 class), iOS conventions; see `../process-materials/05-process-record/decision-log.md` D-04
 - **Prototypes:** [`low-fi/`](low-fi/index.html) (paper style, tested), [`mid-fi/`](mid-fi/index.html) (frozen for heuristic evaluation), [`hi-fi/`](hi-fi/index.html) (final)
 - **Machine-readable version:** [`figma-build-spec.json`](figma-build-spec.json)
 
-Screen IDs follow the Chinese guide (S = simple, M = moderate, C = complex; H = helper phone). The scenario data is fixed in [`../process-materials/design-brief.md`](../process-materials/design-brief.md) Section 9.
+Screen IDs follow the Chinese guide (S = simple, M = moderate, C = complex; H = helper phone). The scenario data is fixed in `../process-materials/01-sketching-and-low-fidelity-prototyping/05-construct-low-fidelity-paper-prototype/scenario-data.md`.
 
 ## 1. Screens and states
 

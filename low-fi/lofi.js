@@ -3,10 +3,11 @@
   const params = new URLSearchParams(location.search);
   const VIEW = params.get("view") || "both";
   const NS = "ts-lofi-" + (params.get("session") || "default");
-  let partner = params.get("partner") === "auto";
+  const partner = VIEW !== "both" && params.get("partner") === "auto";
+  const PARTNER = VIEW === "elder" ? "Xiaoyu" : "Mom";
 
   const initial = () => ({
-    e: "home", app: null, clinic: "list", sharing: "off", pause: null,
+    e: "home", app: null, appBlocked: false, clinic: "list", sharing: "off", pause: null,
     h: "idle", pointing: false, markTarget: null, mark: null, markDone: false,
     chips: [], custom: "", askOpen: false, ask: null, reply: null, notif: false,
     saved: [], savedOpen: null, steps: [], requested: false, helperWaited: false,
@@ -21,11 +22,19 @@
   S.toast = null;
   const save = () => localStorage.setItem(NS, JSON.stringify(S));
 
+  const log = [];
+  const note = (kind, text) => log.push({ time: new Date().toTimeString().slice(0, 8), kind, text });
+  const scripted = (text) => note("scripted " + PARTNER, text);
+
   const timers = {};
   function schedule(key, ms, fn) {
     if (timers[key]) return;
     timers[key] = setTimeout(() => { delete timers[key]; fn(); render(); }, ms);
   }
+  function clearTimers() {
+    Object.keys(timers).forEach((k) => { clearTimeout(timers[k]); delete timers[k]; });
+  }
+  function resetAll() { clearTimers(); S = initial(); note("facilitator", "Reset"); }
   function toast(role, text) {
     S.toast = text; S.toastRole = role;
     clearTimeout(timers.__toast);
@@ -52,11 +61,16 @@
     S.pointing = false; S.endedBy = by;
   }
   function privateMessage() {
-    S.notif = true;
     if (S.sharing === "active") {
-      S.sharing = "paused"; S.pause = "private"; S.e = "paused"; S.h = "paused"; S.pointing = false;
+      S.notif = true; S.sharing = "paused"; S.pause = "private"; S.e = "paused"; S.h = "paused"; S.pointing = false;
       step("A private message arrived - sharing paused");
+      return "Bank SMS arrived; sharing paused";
     }
+    if (S.sharing === "paused") { S.notif = true; return "Bank SMS arrived while sharing was paused"; }
+    return "Bank SMS ignored: sharing is not active";
+  }
+  function facilitatorEvent(name) {
+    if (name === "bank-sms") note("facilitator", privateMessage());
   }
 
   /* ---------- actions ---------- */
@@ -65,9 +79,11 @@
     pick: (a) => { S.app = a; },
     "start-share": () => {
       if (!S.app) { toast("elder", "Choose an app first"); return; }
+      if (S.app !== "clinic") { S.appBlocked = true; return; }
       S.e = "calling"; S.sharing = "calling"; S.h = "request";
     },
-    cancel: () => { S.e = "home"; S.sharing = "off"; S.h = "idle"; },
+    "choose-again": () => { S.appBlocked = false; S.app = null; },
+    cancel: () => { S.e = "home"; S.sharing = "off"; S.h = "idle"; S.appBlocked = false; },
     "clinic-continue": () => { S.clinic = "confirm"; },
     "clinic-back": () => { S.clinic = "list"; },
     "clinic-confirm": () => tapConfirm(),
@@ -78,7 +94,7 @@
     "end-help": () => endSession("elder"),
     "see-steps": () => { S.e = "steps"; },
     "steps-back": () => { S.e = "paused"; },
-    repeat: () => { S.repeat++; toast("elder", "Reading the explanation aloud..."); },
+    repeat: () => { S.repeat++; toast("elder", "Showing Xiaoyu's explanation again"); },
     ask: () => { S.askOpen = true; },
     "ask-send": (q) => { S.ask = q; S.reply = null; S.askOpen = false; },
     "ask-close": () => { S.askOpen = false; },
@@ -109,7 +125,7 @@
     "h-ok": () => { S.h = "idle"; },
   };
   function resetSession() {
-    Object.assign(S, { app: null, clinic: "list", sharing: "off", pause: null, h: "idle", pointing: false,
+    Object.assign(S, { app: null, appBlocked: false, clinic: "list", sharing: "off", pause: null, h: "idle", pointing: false,
       markTarget: null, mark: null, markDone: false, ask: null, reply: null, askOpen: false, notif: false,
       steps: [], requested: S.requested, helperWaited: false, endedBy: null });
   }
@@ -118,24 +134,55 @@
   function partnerTick() {
     if (!partner) return;
     if (VIEW === "elder") {
-      if (S.sharing === "calling") schedule("join", 1800, helperJoin);
+      if (S.sharing === "calling") {
+        schedule("join", 1800, () => {
+          if (S.sharing !== "calling") return;
+          helperJoin(); scripted("joined the session");
+        });
+      }
       if (S.sharing === "active" && S.clinic === "confirm" && !S.mark && !S.markDone) {
         schedule("mark", 2200, () => {
-          if (S.clinic !== "confirm" || S.sharing !== "active") return;
+          if (S.clinic !== "confirm" || S.sharing !== "active" || S.mark || S.markDone) return;
           S.markTarget = "confirm";
           S.mark = { text: "This confirms your Thursday 9:30 visit. It won't book twice.", target: "confirm" };
           step("Xiaoyu marked a step");
+          scripted("marked Confirm booking and sent an explanation");
         });
       }
-      if (S.ask && !S.reply) schedule("reply", 1600, () => { S.reply = "Yes. It only confirms the time you already chose."; });
+      if (S.ask && !S.reply) {
+        schedule("reply", 1600, () => {
+          if (!S.ask || S.reply) return;
+          S.reply = "Yes. It only confirms the time you already chose."; scripted("answered Mom's question");
+        });
+      }
     }
     if (VIEW === "helper") {
       if (S.e === "home" && S.sharing === "off" && !S.requested) {
-        schedule("request", 1200, () => { S.app = "clinic"; S.e = "calling"; S.sharing = "calling"; S.h = "request"; S.requested = true; });
+        schedule("request", 1200, () => {
+          if (S.sharing !== "off" || S.requested) return;
+          S.app = "clinic"; S.e = "calling"; S.sharing = "calling"; S.h = "request"; S.requested = true;
+          scripted("asked for help with Clinic");
+        });
       }
-      if (S.sharing === "active" && S.clinic === "list" && !S.markDone) schedule("nav", 1800, () => { if (S.clinic === "list") S.clinic = "confirm"; });
-      if (S.sharing === "active" && S.mark && S.clinic === "confirm") schedule("momtap", 2600, () => { if (S.mark) tapConfirm(); });
-      if (S.sharing === "paused" && S.helperWaited) schedule("momend", 2400, () => { if (S.sharing === "paused") { endSession("elder"); S.saved.push("Book a follow-up visit"); } });
+      if (S.sharing === "active" && S.clinic === "list" && !S.markDone) {
+        schedule("nav", 1800, () => {
+          if (S.sharing !== "active" || S.clinic !== "list") return;
+          S.clinic = "confirm"; scripted("opened the confirmation page");
+        });
+      }
+      if (S.sharing === "active" && S.mark && S.clinic === "confirm") {
+        schedule("momtap", 2600, () => {
+          if (S.sharing !== "active" || !S.mark || S.clinic !== "confirm") return;
+          tapConfirm(); scripted("tapped Confirm booking");
+        });
+      }
+      // The script never ends help or saves a recap for Mom; after Xiaoyu waits, Mom resumes sharing.
+      if (S.sharing === "paused" && S.helperWaited) {
+        schedule("resume", 4000, () => {
+          if (S.sharing !== "paused" || !S.helperWaited) return;
+          A.resume(); scripted("resumed sharing");
+        });
+      }
     }
   }
 
@@ -183,6 +230,11 @@
         body = `<h1>Share which app?</h1>` +
           APPS.map(([k, n]) => `<div class="card tap ${S.app === k ? "sel" : ""}" data-act="pick:${k}"><p><span class="radio">${S.app === k ? "&#10003;" : ""}</span>${n}</p></div>`).join("") +
           `<p class="center">Only this app will be shared</p><div class="spacer"></div>${btn("Start sharing", "start-share", "big")}${btn("Cancel", "cancel", "link")}`;
+        if (S.appBlocked) {
+          overlay = `<div class="overlay"><h2>Not in this paper prototype</h2>
+            <p>Only Clinic has demo content. Chat and Photos cannot be shared here.</p><p>Please choose Clinic to continue.</p>
+            <div class="spacer"></div>${btn("Choose again", "choose-again", "big")}</div>`;
+        }
         break;
       case "calling":
         body = `<div class="spacer"></div><h1 class="center">Calling Xiaoyu...</h1><p class="center">Clinic will be shared</p><div class="spacer"></div>${btn("Cancel", "cancel", "link")}`;
@@ -286,8 +338,8 @@
     const f = ev.target.closest("[data-facil]");
     if (f) {
       const v = f.dataset.facil;
-      if (v === "reset") { S = initial(); Object.keys(timers).forEach((k) => clearTimeout(timers[k])); }
-      if (v.startsWith("event:")) TS.event(v.slice(6));
+      if (v === "reset") resetAll();
+      if (v.startsWith("event:")) facilitatorEvent(v.slice(6));
       render(); return;
     }
     const el = ev.target.closest("[data-act]");
@@ -297,18 +349,16 @@
   });
   document.addEventListener("input", (ev) => { if (ev.target.id === "custom") { S.custom = ev.target.value; save(); } });
 
-  const toggle = document.getElementById("partnerToggle");
-  toggle.checked = partner;
-  toggle.addEventListener("change", () => { partner = toggle.checked; render(); });
   if (VIEW !== "both") {
     document.body.classList.add("solo");
     document.querySelector(`.device[data-role="${VIEW}"]`).classList.add("active");
   }
 
   window.TS = {
-    event(name) { if (name === "bank-sms") privateMessage(); render(); },
+    event(name) { facilitatorEvent(name); render(); },
     state: () => JSON.parse(JSON.stringify(S)),
-    reset() { S = initial(); render(); },
+    log: () => log.slice(),
+    reset() { resetAll(); render(); },
   };
   render();
 })();

@@ -12,7 +12,7 @@ a { color: #1e56a0; }
 .card b { color: #1e56a0; font-size: 18px; }
 </style></head><body><h1>TogetherStep — Interactive Prototype README</h1>
 <p><strong>TogetherStep (陪你走一步)</strong> is a mobile app concept that lets an older adult get help with an unfamiliar phone screen from a family member <em>without handing over control</em>. The older adult shares only the one app she chooses; the helper points at the next button and explains what it will do; the older adult taps it herself; private notifications pause sharing automatically; and a short, optional recap helps her do it alone next time.</p>
-<p>This folder contains the interactive <strong>high-fidelity prototype</strong> built for CSC5056 / CSC4130 / AIR5064 <em>Introduction to Human-Computer Interaction</em> (CUHK-Shenzhen, Fall 2026), Assignment 2, by Graduate Team 7: Ma Xinyu, Ma Xueyi, Su Shaozhi, Tang Shiyuan and Zhang Shuo. It simulates the experience; there is no real screen sharing, calling or backend.</p>
+<p>This folder contains the interactive <strong>high-fidelity prototype</strong> built for CSC5056 / CSC4130 / AIR5064 <em>Introduction to Human-Computer Interaction</em> (CUHK-Shenzhen), Assignment 2, by Graduate Team 7: Ma Xinyu, Ma Xueyi, Su Shaozhi, Tang Shiyuan and Zhang Shuo. It simulates the experience; there is no real screen sharing, calling or backend.</p>
 <table>
 <thead>
 <tr>
@@ -31,7 +31,7 @@ a { color: #1e56a0; }
 </tr>
 <tr>
 <td><strong>Earlier versions</strong></td>
-<td><a href="low-fi/index.html"><code>low-fi/</code></a> (paper-style, tested with two simulated users) · <a href="mid-fi/index.html"><code>mid-fi/</code></a> (frozen for heuristic evaluation, commit <code>075fcc6</code>) · <a href="hi-fi/index.html"><code>hi-fi/</code></a> (final)</td>
+<td><a href="low-fi/index.html"><code>low-fi/</code></a> (paper-style, tested with two simulated users; two prototype defects fixed after testing) · <a href="mid-fi/index.html"><code>mid-fi/</code></a> (frozen for heuristic evaluation, commit <code>075fcc6</code>) · <a href="hi-fi/index.html"><code>hi-fi/</code></a> (final)</td>
 </tr>
 </tbody>
 </table>
@@ -220,7 +220,7 @@ a { color: #1e56a0; }
 <h2>5. Development approach</h2>
 <h3>How the prototype was built</h3>
 <ul>
-<li><strong>Design process:</strong> two alternative directions with ten annotated sketches → selected design → three storyboards → clickable paper-style prototype tested with two AI-simulated users (Think Aloud) → medium-fidelity prototype → five independent heuristic-evaluation passes (H1–H12, 49 consolidated violations) → this high-fidelity prototype, which addresses all 16 major (severity 3–4) violations — 15 fully and one partly, because a booking-cancel function belongs to the third-party clinic app — and all minor ones (see <code>../evaluation/iteration-table.csv</code>).</li>
+<li><strong>Design process:</strong> two alternative directions with ten annotated sketches → selected design → three storyboards → clickable paper-style prototype tested with two AI-simulated users (Think Aloud) → medium-fidelity prototype → five independent analysis perspectives (H1–H12, 49 consolidated violations) → this high-fidelity prototype, which addresses all 16 major (severity 3–4) violations — 15 fully and one partly, because a booking-cancel function belongs to the third-party clinic app — and all minor ones (see <code>../evaluation/iteration-table.csv</code>).</li>
 <li><strong>Technology:</strong> plain HTML, CSS and JavaScript in three files (<code>index.html</code>, <code>app.css</code>, <code>app.js</code>), no framework or build step. One state object drives both phones, so an action on one phone immediately updates the other, as in a real shared session. State is saved in <code>localStorage</code> so a review can be resumed.</li>
 <li><strong>Design system:</strong> iOS-sized frame and type scale (body 17 pt, instructions 21 pt, titles 32 pt), colour tokens with measured WCAG contrast, primary and safety controls of at least 48 pt and all other controls of at least 44 pt (except two links in the scaled-down copy of Mom's screen on Xiaoyu's phone, 43 pt, which get a larger hit area in point mode), and consistent components (buttons, sheets, alerts, banners, sharing bar). Tokens and components are listed in <a href="screen-inventory.md"><code>screen-inventory.md</code></a> and <a href="figma-build-spec.json"><code>figma-build-spec.json</code></a>.</li>
 <li><strong>Tooling:</strong> Python + Playwright scripts drive the prototype for automated walkthroughs, screen exports (<code>../scripts/capture_screens.py</code>), the measured accessibility audit (<code>../scripts/a11y_audit.py</code>) and the demo video (<code>../video/build_video.py</code>). Illustrations and the initial sketches were generated with an AI image tool.</li>
@@ -338,4 +338,4 @@ a { color: #1e56a0; }
 <li>Plain language without technical terms; the helper must explain the <em>result</em> of a step, not only where to tap; the explanation can be read aloud.</li>
 <li>Buttons have text labels; decorative illustrations use empty <code>alt</code> text.</li>
 </ul>
-<p><strong>Known accessibility gaps:</strong> no real screen-reader testing was performed; the browser prototype does not support Dynamic Type scaling or system dark mode; the measured audit (<code>../process-materials/heuristic-evaluation/accessibility-audit.md</code>) lists remaining items.</p></body></html>
+<p><strong>Known accessibility gaps:</strong> no real screen-reader testing was performed; the browser prototype does not support Dynamic Type scaling or system dark mode; the measured audits <code>../process-materials/03-heuristic-evaluation/accessibility-audit-mid-fidelity.md</code> and <code>../process-materials/04-interactive-high-fidelity-prototyping/accessibility-audit-high-fidelity.md</code> list remaining items.</p></body></html>
