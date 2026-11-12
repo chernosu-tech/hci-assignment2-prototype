@@ -1,4 +1,4 @@
-<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>TogetherStep - prototype README</title><style>
+<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>TogetherStep - Prototype README</title><style>
 body { font: 16px/1.55 -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color: #1a1a1a; max-width: 900px; margin: 32px auto; padding: 0 20px; }
 h1, h2, h3 { line-height: 1.25; } h1 { color: #1e3a5f; }
 table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 15px; }
@@ -6,336 +6,310 @@ th, td { border: 1px solid #d9dee5; padding: 6px 8px; text-align: left; vertical
 th { background: #eef3fa; }
 code { background: #f3f4f6; padding: 1px 4px; border-radius: 4px; }
 a { color: #1e56a0; }
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 20px 0; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, minmax(240px, 1fr))); grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 20px 0; }
 .card { border: 1px solid #d9dee5; border-radius: 14px; padding: 16px; text-decoration: none; color: inherit; display: block; }
 .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
 .card b { color: #1e56a0; font-size: 18px; }
-</style></head><body><h1>TogetherStep — Interactive Prototype README</h1>
-<p><strong>TogetherStep (陪你走一步)</strong> is a mobile app concept that lets an older adult get help with an unfamiliar phone screen from a family member <em>without handing over control</em>. The older adult shares only the one app she chooses; the helper points at the next button and explains what it will do; the older adult taps it herself; private notifications pause sharing automatically; and a short, optional recap helps her do it alone next time.</p>
-<p>This folder contains the interactive <strong>high-fidelity prototype</strong> built for CSC5056 / CSC4130 / AIR5064 <em>Introduction to Human-Computer Interaction</em> (CUHK-Shenzhen), Assignment 2, by Graduate Team 7: Ma Xinyu, Ma Xueyi, Su Shaozhi, Tang Shiyuan and Zhang Shuo. It simulates the experience; there is no real screen sharing, calling or backend.</p>
+</style></head><body><h1>TogetherStep: Interactive Prototype README</h1>
+<p><strong>TogetherStep (陪你走一步)</strong> is a mobile app concept that helps an older adult navigate an unfamiliar phone screen with remote guidance from a family member, <em>without handing over control of the phone</em>. The older adult shares only the one app she chooses, the helper points at the next button and writes a plain-language explanation of what it will do, the older adult taps the button on her own phone, private notifications pause sharing automatically, and an optional step-by-step note helps her repeat the task next time.</p>
+<p>This folder contains the interactive high-fidelity prototype built for CSC5056 / CSC4130 / AIR5064 <em>Introduction to Human-Computer Interaction</em> (CUHK-Shenzhen, Assignment 2) by Graduate Team 7: Ma Xinyu, Ma Xueyi, Su Shaozhi, Tang Shiyuan, and Zhang Shuo. All calls, screen sharing, notifications, and clinic booking states are simulated in the browser.</p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th></th>
+<th>Link</th>
+<th>URL and description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Live prototype</strong></td>
+<td>Live prototype</td>
 <td><a href="https://chernosu-tech.github.io/hci-assignment2-prototype/hi-fi/">https://chernosu-tech.github.io/hci-assignment2-prototype/hi-fi/</a></td>
 </tr>
 <tr>
-<td><strong>Design link</strong></td>
-<td><a href="https://chernosu-tech.github.io/hci-assignment2-prototype/screens/index.html">https://chernosu-tech.github.io/hci-assignment2-prototype/screens/index.html</a> — exported screens of every key state (<a href="screens/index.html"><code>screens/</code></a>) and the Figma build specification (<a href="figma-build-spec.json"><code>figma-build-spec.json</code></a>)</td>
+<td>Screen gallery and design spec</td>
+<td><a href="https://chernosu-tech.github.io/hci-assignment2-prototype/screens/index.html">https://chernosu-tech.github.io/hci-assignment2-prototype/screens/index.html</a> (exported frames for all 26 states in <a href="screens/index.html"><code>screens/</code></a> and the component/token specification in <a href="figma-build-spec.json"><code>figma-build-spec.json</code></a>)</td>
 </tr>
 <tr>
-<td><strong>Earlier versions</strong></td>
-<td><a href="low-fi/index.html"><code>low-fi/</code></a> (paper-style, tested with two simulated users; two prototype defects fixed after testing) · <a href="mid-fi/index.html"><code>mid-fi/</code></a> (frozen for heuristic evaluation, commit <code>075fcc6</code>) · <a href="hi-fi/index.html"><code>hi-fi/</code></a> (final)</td>
+<td>Prototype versions</td>
+<td><a href="low-fi/index.html"><code>low-fi/</code></a> (clickable paper-style prototype used in Phase 1 testing), <a href="mid-fi/index.html"><code>mid-fi/</code></a> (accepted medium-fidelity prototype evaluated in Phase 3), and <a href="hi-fi/index.html"><code>hi-fi/</code></a> (final high-fidelity prototype)</td>
 </tr>
 </tbody>
 </table>
-<hr />
 <h2>1. Access and setup</h2>
-<p><strong>Online:</strong> open the live prototype link above in a desktop browser (Chrome, Edge, Safari or Firefox, current versions). No account, installation or permission is needed.</p>
-<p><strong>Offline / from the files:</strong></p>
-<ol>
-<li>Download or clone the public repository <a href="https://github.com/chernosu-tech/hci-assignment2-prototype">github.com/chernosu-tech/hci-assignment2-prototype</a> (or unzip the shared folder).</li>
-<li>Open <code>hi-fi/index.html</code> (in the team repository: <code>assignment-2/prototype/hi-fi/index.html</code>) by double-clicking it. It runs entirely in the browser with no server and no internet connection; all assets are local.</li>
-<li>Use a window at least about 1,000 px wide so both phones fit side by side.</li>
-</ol>
-<p><strong>What you see:</strong> two iPhone-sized screens side by side — <strong>Mom's phone</strong> (the older adult, left) and <strong>Xiaoyu's phone</strong> (her daughter, the remote helper, right). You operate <em>both</em> phones yourself, as if you were each person in turn. A thin control bar above the phones is <strong>not part of the design</strong>; it lets reviewers jump to a task flow, trigger the simulated bank SMS, auto-play the other phone, or reset.</p>
-<p><strong>Other views (optional):</strong></p>
+<p>Online: open the live prototype link above in any current desktop browser (Chrome, Edge, Safari, or Firefox). No login, installation, or special permissions are needed.</p>
+<p>Offline from local files:
+1. Download or clone <a href="https://github.com/chernosu-tech/hci-assignment2-prototype">github.com/chernosu-tech/hci-assignment2-prototype</a> (or open <code>assignment-2/prototype/</code> inside the project repository).
+2. Double-click <code>hi-fi/index.html</code> to open it in a browser. Every script, stylesheet, and image is local, so no server or internet connection is required.
+3. Use a browser window at least 1,000 px wide so both phone frames appear side by side.</p>
+<p>What is shown on screen: two iPhone-sized frames side by side, with <strong>Mom's phone</strong> (the older adult, left) and <strong>Xiaoyu's phone</strong> (her daughter, the remote helper, right). You can click buttons on both phones directly to walk through both sides of the session. The thin bar across the very top of the page is a reviewer toolbar (not part of the app interface) that lets you jump directly to Task Flow 1, 2, or 3, trigger the incoming bank SMS, toggle auto-play for the other phone, or reset the state.</p>
+<p>Optional query parameters:</p>
 <table>
 <thead>
 <tr>
 <th>URL suffix</th>
-<th>Effect</th>
+<th>Behavior</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>?view=elder&amp;partner=auto</code></td>
-<td>Only Mom's phone; Xiaoyu's actions happen automatically (good for testing the older adult's side alone)</td>
+<td>Shows only Mom's phone while Xiaoyu's side responds automatically</td>
 </tr>
 <tr>
 <td><code>?view=helper&amp;partner=auto</code></td>
-<td>Only Xiaoyu's phone; Mom's actions happen automatically</td>
+<td>Shows only Xiaoyu's phone while Mom's side responds automatically</td>
 </tr>
 <tr>
 <td><code>#flow=simple</code>, <code>#flow=moderate</code>, <code>#flow=complex</code></td>
-<td>Start directly at the beginning of a task flow</td>
+<td>Jumps directly to the start of the selected task flow</td>
 </tr>
 <tr>
 <td><code>?fresh=1</code></td>
-<td>Clear the saved prototype state (state is otherwise kept in the browser's local storage)</td>
+<td>Clears saved state in <code>localStorage</code> and starts from a clean home screen</td>
 </tr>
 </tbody>
 </table>
 <h2>2. Target device</h2>
 <ul>
-<li><strong>Smartphone, portrait, touch</strong>, designed at <strong>393 × 852 pt</strong> (iPhone 15 / 16 class) following iOS conventions: status bar with Dynamic Island, navigation bar, tab bar, bottom sheets, alerts, notification banners and the home indicator.</li>
-<li>Both people use the same app on their own phones; the older adult's role and the helper's role have different screens.</li>
-<li>In the browser, one CSS pixel corresponds to one iOS point. On a real phone the prototype can be viewed with <code>?view=elder</code> or <code>?view=helper</code>, but it is optimised for the two-phone desktop view.</li>
-<li>Android conventions (back gesture, Material components) are not prototyped; see Limitations.</li>
+<li>Smartphone in portrait orientation, designed at <strong>393 x 852 pt</strong> (iPhone 15 / 16 dimensions) using standard iOS interface patterns: status bar with Dynamic Island, navigation bar, bottom tab bar, modal sheets, alerts, notification banners, and home indicator.</li>
+<li>Both users install the same app on their own phones, which presents the older-adult view for Mom and the helper view for Xiaoyu.</li>
+<li>In the desktop browser, 1 CSS pixel represents 1 iOS point. You can also open <code>?view=elder</code> or <code>?view=helper</code> on a mobile browser, though the dual-phone desktop layout is easiest for reviewing both sides together.</li>
 </ul>
 <h2>3. Context of use</h2>
-<p><strong>Who.</strong> Older adults (about 60–75) who use a few familiar apps but get stuck when an app changes, often living alone; and their adult children, who help remotely from another city and are often short of time. In our Assignment 1 interviews, helpers could not see the screen ("a blue one"), screenshots were out of date, older adults feared the consequence of a tap (for example a double booking), and showing the phone exposed private details.</p>
-<p><strong>When and where.</strong> At home, in the middle of a familiar task — here, confirming a follow-up visit in the (fictional) <em>Community Clinic</em> app, whose new confirmation page has made Mom unsure. Xiaoyu is at work or at home in another city.</p>
-<p><strong>What users can accomplish (the three task flows in this prototype):</strong></p>
-<ol>
-<li><strong>Simple — ask for help and share one app.</strong> Mom asks Xiaoyu for help and shares only Community Clinic; Xiaoyu joins and sees only that app.</li>
-<li><strong>Moderate — follow a marked, explained step.</strong> Xiaoyu points at "Confirm booking" and explains what it does; Mom taps it herself; both phones show the confirmed booking.</li>
-<li><strong>Complex — handle a private interruption and keep a recap.</strong> A text from Mom's bank arrives; sharing pauses automatically; Mom reviews the steps, ends help, edits and saves (or declines) a short recap, and can open it later from <em>My steps</em>.</li>
-</ol>
+<p>Target users: older adults (roughly 60 to 75) who handle everyday mobile tasks on their own but stop when an app update changes a familiar flow, and their adult children who help remotely from another city while juggling work and family schedules. In our Assignment 1 interviews, helpers could not see what was on the parent's screen ("a blue one"), static screenshots fell behind after a tap, older adults worried about what a button would do (such as booking twice), and full-screen sharing exposed private messages or financial details.</p>
+<p>Scenario: Mom is at home trying to confirm a follow-up appointment with Dr. Wang in the fictional <em>Community Clinic</em> app, where a redesigned confirmation screen makes her hesitate. Her daughter Xiaoyu helps remotely from another city.</p>
+<p>Three user task flows supported in the prototype:
+1. <strong>Simple flow (ask for help and share one app):</strong> Mom asks Xiaoyu for help and chooses to share only Community Clinic; Xiaoyu joins and sees only that app.
+2. <strong>Moderate flow (follow a marked and explained step):</strong> Xiaoyu points at <code>Confirm booking</code> in her live mirror and sends a short explanation of what it does; Mom reads the note, taps the button on her own phone, and both phones show the booking confirmation.
+3. <strong>Complex flow (handle a private interruption and save a recap):</strong> An incoming bank SMS automatically pauses screen sharing and mutes Mom's microphone; Mom checks the session steps, ends help, optionally edits and saves a step-by-step reminder to <em>My steps</em>, and reopens it later.</p>
 <h2>4. Operating instructions</h2>
-<p>Tap with the mouse. Everything that looks like a button is interactive on the phone it belongs to.</p>
-<h3>Flow 1 — Simple (start: control bar → <strong>1 Simple</strong>, or a fresh page)</h3>
+<p>Click any button inside either phone frame with the mouse.</p>
+<h3>Flow 1: Simple (toolbar <code>1 Simple</code>, or a fresh page)</h3>
 <table>
 <thead>
 <tr>
 <th>Step</th>
 <th>Phone</th>
-<th>Do this</th>
-<th>You should see</th>
+<th>Action</th>
+<th>Expected result</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
 <td>Mom</td>
-<td>Tap <strong>Ask Xiaoyu for help</strong></td>
-<td>"Which app do you need help with?" (nothing pre-selected)</td>
+<td>Tap <code>Ask Xiaoyu for help</code></td>
+<td>Opens <code>Which app do you need help with?</code> with no app pre-selected and a prompt to choose one app</td>
 </tr>
 <tr>
 <td>2</td>
 <td>Mom</td>
-<td>Tap <strong>Community Clinic</strong>, then <strong>Next</strong></td>
-<td>"Share Community Clinic with Xiaoyu?" with what she can and cannot do, and that a voice call starts</td>
+<td>Tap <code>Community Clinic</code>, then <code>Next</code></td>
+<td>Scope note updates to name <code>Community Clinic only</code>, then opens <code>Share Community Clinic with Xiaoyu?</code> listing what Xiaoyu can and cannot do and noting that a voice call starts</td>
 </tr>
 <tr>
 <td>3</td>
 <td>Mom</td>
-<td>Optionally tap a reason (for example <strong>Confirm or book a visit</strong>), then <strong>Call Xiaoyu and share</strong></td>
-<td>"Calling Xiaoyu…" (nothing is shared yet); Xiaoyu sees who is asking, which app and the reason</td>
+<td>Optionally pick a reason chip (such as <code>Confirm or book a visit</code>), then tap <code>Call Xiaoyu and share</code></td>
+<td>Mom sees <code>Calling Xiaoyu...</code> (nothing shared yet); Xiaoyu's phone shows who is asking, which app, and the chosen reason</td>
 </tr>
 <tr>
 <td>4</td>
 <td>Xiaoyu</td>
-<td>Tap <strong>Join</strong></td>
-<td>Xiaoyu sees "Live · you see: Community Clinic only" and a live copy of the clinic app; Mom's screen gets a green frame and a sharing bar with <strong>Pause</strong> and <strong>End help</strong></td>
+<td>Tap <code>Join</code></td>
+<td>Xiaoyu sees <code>Live · you see: Community Clinic only</code> above the mirrored clinic app; Mom's phone shows a green sharing frame and top bar with <code>Call on</code>, <code>Pause</code>, and <code>End help</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>End state:</strong> both phones show the same clinic screen. Alternatives to try: <strong>Next</strong> without choosing an app, the locked <strong>Banking apps</strong> row, <strong>Chat</strong> (demo content is only available for Community Clinic, which the prototype says before anything is shared), <strong>Cancel request</strong> while calling, and <strong>Not now</strong> on Xiaoyu's phone (quick reply, decline without a message, or <strong>Join now instead</strong>); after a decline, Mom's home shows Xiaoyu's reply and "Busy right now".</p>
-<h3>Flow 2 — Moderate (start: control bar → <strong>2 Moderate</strong>)</h3>
+<p>Additional paths to try in Flow 1: tapping <code>Next</code> before choosing an app; reading or tapping the locked <code>Banking apps</code> row (which explains money protection and suggests calling without screen sharing); tapping <code>Chat</code> or <code>Photos</code> (badged <code>Demo limit</code> right in the picker so unsupported choices are flagged before the consent step); tapping <code>Cancel request</code> while calling (which cancels pending partner timers cleanly); or tapping <code>Not now</code> on Xiaoyu's phone to go back, join instead, or send a quick reply (which updates Mom's home screen with Xiaoyu's message and <code>Busy right now</code>, and records the sent reply on Xiaoyu's home screen).</p>
+<h3>Flow 2: Moderate (toolbar <code>2 Moderate</code>)</h3>
 <table>
 <thead>
 <tr>
 <th>Step</th>
 <th>Phone</th>
-<th>Do this</th>
-<th>You should see</th>
+<th>Action</th>
+<th>Expected result</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
 <td>Mom</td>
-<td>Tap <strong>Continue</strong> under the appointment</td>
-<td>The new "Confirm your booking" page (also on Xiaoyu's phone)</td>
+<td>Tap <code>Continue</code> on the appointment card</td>
+<td>Opens the updated <code>Confirm your booking</code> page on both Mom's screen and Xiaoyu's mirror</td>
 </tr>
 <tr>
 <td>2</td>
 <td>Xiaoyu</td>
-<td>Tap <strong>Point</strong>, then tap <strong>Confirm booking</strong> on the live copy (scroll inside the frame to reach lower controls)</td>
-<td>"What will 'Confirm booking' do?" — marking never presses the button, and Mom sees nothing until it is sent</td>
+<td>Tap <code>Point</code>, then tap <code>Confirm booking</code> inside the scrollable mirrored clinic screen</td>
+<td>Opens <code>What will "Confirm booking" do?</code> noting that marking only places a highlight (draft stays on Xiaoyu's side until sent)</td>
 </tr>
 <tr>
 <td>3</td>
 <td>Xiaoyu</td>
-<td>Tap one or more suggestions (they change with the marked button) or type your own, check "Mom will see", tap <strong>Send to Mom</strong></td>
-<td>"Sent. Mom can see your mark now."</td>
+<td>Select one or more target-specific phrases or type custom text, check the <code>Mom will see</code> preview, and tap <code>Send to Mom</code> (or <code>Cancel explanation</code>)</td>
+<td>Xiaoyu sees <code>Sent. Mom can see your mark now.</code></td>
 </tr>
 <tr>
 <td>4</td>
 <td>Mom</td>
-<td>Read the outlined button with its "Xiaoyu marked this" tag and Xiaoyu's words above the page; optionally tap <strong>Hear it again</strong> (read aloud), <strong>Ask Xiaoyu</strong>, or <strong>Hide</strong></td>
-<td>The words are spoken; a question appears on Xiaoyu's phone, where she can tap a reply</td>
+<td>Read the 5 px dark-orange outline, <code>Xiaoyu marked this</code> tag, and Xiaoyu's explanation card docked above the page; optionally tap <code>Hear it again</code>, <code>Ask Xiaoyu</code>, or <code>Hide</code></td>
+<td><code>Hear it again</code> speaks the explanation aloud; <code>Ask Xiaoyu</code> sends a question or request to Xiaoyu's phone where she can tap a reply</td>
 </tr>
 <tr>
 <td>5</td>
 <td>Mom</td>
-<td>Tap <strong>Confirm booking</strong></td>
-<td>"Booking confirmed — A-0236" on Mom's phone; "Mom tapped 'Confirm booking'" on Xiaoyu's phone</td>
+<td>Tap <code>Confirm booking</code> on Mom's phone</td>
+<td>Mom sees <code>Booking confirmed</code> (<code>A-0236</code>); Xiaoyu sees <code>Mom tapped "Confirm booking". The booking is confirmed (A-0236).</code></td>
 </tr>
 </tbody>
 </table>
-<p>Try also: mark <strong>Change time</strong> and then let Mom tap <strong>Confirm booking</strong> — both phones point out that this was not the marked button. <strong>Continue</strong> (on the appointments page) and <strong>Back</strong> can be marked too: Mom sees Xiaoyu's words for whichever button is marked, tapping it counts as following the mark, and leaving the page removes the mark and tells Xiaoyu.</p>
-<h3>Flow 3 — Complex (start: control bar → <strong>3 Complex</strong>; the bank SMS arrives after about 2.5 s, or press <strong>Simulate bank SMS</strong>)</h3>
+<p>Additional paths to try in Flow 2: mark <code>Change time</code> on Xiaoyu's phone and then have Mom tap <code>Confirm booking</code> anyway (both phones persistently report that a different button was tapped and state the clinic-reception boundary); mark <code>Continue</code> on the first clinic page or <code>Back</code> on the confirmation page; or ask <code>Can I change it later?</code> (the preset reply states the actual scope boundary rather than promising an unimplemented cancel button).</p>
+<h3>Flow 3: Complex (toolbar <code>3 Complex</code>; the bank SMS arrives after ~2.5 s, or click <code>Simulate bank SMS</code>)</h3>
 <table>
 <thead>
 <tr>
 <th>Step</th>
 <th>Phone</th>
-<th>Do this</th>
-<th>You should see</th>
+<th>Action</th>
+<th>Expected result</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>—</td>
-<td>Wait for the SMS</td>
-<td>Mom sees the City Bank message and a sheet: sharing paused, "Xiaoyu did not see it", microphone off, "Never read codes aloud"; Xiaoyu sees "Sharing paused automatically" with the reason but no content</td>
+<td>Both</td>
+<td>Wait for the SMS (or click <code>Simulate bank SMS</code>)</td>
+<td>Mom sees the City Bank verification banner and pause sheet stating sharing is paused, <code>Xiaoyu did not see it</code>, her mic is muted, <code>Never read codes aloud</code>, and that resuming closes the banner and shares Community Clinic only; Xiaoyu sees <code>Sharing paused automatically</code> with no mirrored Clinic DOM in the accessibility tree</td>
 </tr>
 <tr>
 <td>2</td>
 <td>Mom</td>
-<td>Optional: <strong>Steps so far</strong>, then <strong>Back</strong> (or <strong>Stay paused for now</strong> to keep using the phone privately)</td>
-<td>A list of what happened, quoting Xiaoyu's words; the sharing bar shows "Paused" with <strong>Resume</strong> and <strong>End help</strong></td>
+<td>Optionally tap <code>Steps so far</code> and <code>Back</code> (or <code>Stay paused for now</code> to inspect the clinic page privately)</td>
+<td>Opens the session log separating <code>Task steps in Community Clinic</code> (quoting Xiaoyu's explanation) from the <code>Sharing status log</code>; the inline SMS banner includes a <code>Dismiss</code> pill and never blocks <code>Back</code></td>
 </tr>
 <tr>
 <td>3</td>
 <td>Mom</td>
-<td>Tap <strong>End help</strong>, then confirm <strong>End help</strong> (the safe <strong>Go back</strong> is the default)</td>
-<td>"Help ended" banner and "Keep a note for next time?"; Xiaoyu sees "Mom ended help"</td>
+<td>Tap <code>End help</code>, then confirm <code>End help</code> in the state-aware dialog (<code>Stay paused</code> is the default button while paused)</td>
+<td>Mom sees the prominent green <code>Help ended</code> banner and optional <code>Keep a note for next time?</code> with the note title shown; Xiaoyu sees <code>Help ended</code></td>
 </tr>
 <tr>
 <td>4</td>
 <td>Mom</td>
-<td>Optional: <strong>Change the words</strong> (each step becomes a large text box), <strong>Done editing</strong>; then <strong>Save to My steps</strong> or <strong>Don't save</strong> (which asks first)</td>
-<td>"Saved to My steps"</td>
+<td>Optionally tap <code>Change the words</code> to edit the title or any step in focused text boxes, then tap <code>Save to My steps</code> directly (or <code>Don't save</code>, which warns before discarding)</td>
+<td>Saves the note locally and shows <code>Saved to My steps</code> with both <code>Open saved note</code> and <code>Back to home</code></td>
 </tr>
 <tr>
 <td>5</td>
 <td>Mom</td>
-<td><strong>Back to home</strong> (a "Your saved steps" card appears), then the <strong>My steps</strong> tab, then the saved note</td>
-<td>The steps, <strong>Edit</strong>, <strong>Delete this note</strong>, and <strong>Ask Xiaoyu for help with this</strong> (opens a request with the app and reason filled in)</td>
+<td>Tap <code>Open saved note</code> (or go via <code>Back to home</code> -&gt; <code>My steps</code> tab)</td>
+<td>Opens the saved five-step guide (separate from the <code>Last time</code> booking record) with <code>Edit</code> (title and steps), <code>Delete this note</code>, and <code>Ask Xiaoyu for help with this</code> (which skips to Step 2 with the note's title attached)</td>
 </tr>
 </tbody>
 </table>
-<p>Alternatives: <strong>Resume sharing</strong> at step 1 continues the session; tapping <strong>Mic off</strong> while paused turns Mom's microphone back on, and Xiaoyu's phone then says she can hear Mom but still cannot see her screen; <strong>Wait for Mom</strong> on Xiaoyu's phone shows "Xiaoyu is waiting for you" on Mom's; Xiaoyu's <strong>End help</strong> asks for confirmation; ending before the booking is confirmed produces a note that says "Your booking is not finished yet".</p>
-<p><strong>Predefined inputs and simulated behaviour:</strong> the appointment (Follow-up visit, General Medicine, Dr Wang, Thu 14 Nov 09:30), the booking number A-0236, the bank SMS, Xiaoyu's availability, her replies to questions and the recap text are hard-coded. Xiaoyu's suggested answers to the three preset questions fit the marked button; the prototype cannot understand a typed question, so in auto-play it gets the neutral reply "Let me check, and I'll tell you on the call." "Change time" in the clinic app is intentionally not implemented and says so.</p>
+<p>Additional paths to try in Flow 3: tap <code>Resume sharing</code> after the pause to close the bank banner and restore Clinic-only sharing; toggle <code>Mic off</code> while paused (which updates Xiaoyu's paused screen to report Mom's and Xiaoyu's microphone states); tap <code>Wait for Mom</code> on Xiaoyu's phone (keeps manual sessions paused and shows <code>Xiaoyu is waiting for you</code> on Mom's side; in <code>?view=helper&amp;partner=auto</code>, the scripted Mom resumes sharing after ~4 s without ending help or saving a note); or end help early from the appointment list or confirmation page (which generates an unfinished note starting from the actual next required tap, including <code>Continue</code> when still on the list).</p>
+<p>Predefined scenario data: the appointment (<code>Follow-up visit</code>, General Medicine, Dr. Wang, Thu 14 Nov 09:30), booking number <code>A-0236</code>, the City Bank SMS (<code>482915</code>), and preset Q&amp;A replies are hard-coded. If a reviewer types a custom free-text question while running in single-phone auto-play mode, the scripted helper responds with the fallback line "Let me check, and I'll tell you on the call."</p>
 <h2>5. Development approach</h2>
-<h3>How the prototype was built</h3>
+<h3>How this prototype was built</h3>
 <ul>
-<li><strong>Design process:</strong> two alternative directions with ten annotated sketches → selected design → three storyboards → clickable paper-style prototype tested with two AI-simulated users (Think Aloud) → medium-fidelity prototype → five independent analysis perspectives (H1–H12, 49 consolidated violations) → this high-fidelity prototype, which addresses all 16 major (severity 3–4) violations — 15 fully and one partly, because a booking-cancel function belongs to the third-party clinic app — and all minor ones (see <code>../evaluation/iteration-table.csv</code>).</li>
-<li><strong>Technology:</strong> plain HTML, CSS and JavaScript in three files (<code>index.html</code>, <code>app.css</code>, <code>app.js</code>), no framework or build step. One state object drives both phones, so an action on one phone immediately updates the other, as in a real shared session. State is saved in <code>localStorage</code> so a review can be resumed.</li>
-<li><strong>Design system:</strong> iOS-sized frame and type scale (body 17 pt, instructions 21 pt, titles 32 pt), colour tokens with measured WCAG contrast, primary and safety controls of at least 48 pt and all other controls of at least 44 pt (except two links in the scaled-down copy of Mom's screen on Xiaoyu's phone, 43 pt, which get a larger hit area in point mode), and consistent components (buttons, sheets, alerts, banners, sharing bar). Tokens and components are listed in <a href="screen-inventory.md"><code>screen-inventory.md</code></a> and <a href="figma-build-spec.json"><code>figma-build-spec.json</code></a>.</li>
-<li><strong>Tooling:</strong> Python + Playwright scripts drive the prototype for automated walkthroughs, screen exports (<code>../scripts/capture_screens.py</code>), the measured accessibility audit (<code>../scripts/a11y_audit.py</code>) and the demo video (<code>../video/build_video.py</code>). Illustrations and the initial sketches were generated with an AI image tool.</li>
+<li>Iterative design across the four course phases: two design directions and ten annotated sketches -&gt; selection of Design A -&gt; three task-flow storyboards -&gt; clickable paper-style prototype evaluated in initial and supplementary Think Aloud sessions (<code>P2-01</code>, <code>P2-02</code>) -&gt; medium-fidelity prototype -&gt; five independent heuristic evaluation perspectives (<code>H1</code> to <code>H12</code>, 83 source observations consolidated into 41 violations, including 7 major severity-3 issues) -&gt; this high-fidelity prototype, which resolves 6 of the 7 major issues in full and 1 (<code>V13</code>, clinic booking cancellation) through bounded recovery guidance because appointment cancellation belongs to the simulated third-party clinic app, alongside 33 of 34 minor/cosmetic issues fully resolved and <code>V46</code> (secondary hint sizing) partly resolved (see <code>../evaluation/iteration-table.csv</code>).</li>
+<li>Implementation stack: plain HTML, CSS, and JavaScript (<code>index.html</code>, <code>app.css</code>, <code>app.js</code>) with no external framework or build step. Both phone views read and update a single shared state object, so an action on one phone immediately updates the other phone, and state persists in <code>localStorage</code>.</li>
+<li>Visual and accessibility system: 393 x 852 pt iOS layout, type scale using 17 CSS px for body, status, and privacy copy and 20-21 CSS px for primary guidance, WCAG-checked color tokens, primary and safety buttons at least 48-50 CSS px tall, and all other interactive controls at least 44-48 CSS px. Full screen and token tables are in <a href="screen-inventory.md"><code>screen-inventory.md</code></a> and <a href="figma-build-spec.json"><code>figma-build-spec.json</code></a>.</li>
+<li>Verification scripts: Python + Playwright scripts in <code>../scripts/</code> run automated interaction and lifecycle checks (<code>test_hifi_paths.py</code>, <code>test_hifi_review_fixes.py</code>), export the 26 screen frames (<code>capture_screens.py</code>), run the 14-state DOM/contrast accessibility audit (<code>a11y_audit.py</code>), and record the demonstration video (<code>../video/build_video.py</code>).</li>
 </ul>
-<h3>How the real product would be developed</h3>
+<h3>How a production version would be engineered</h3>
 <table>
 <thead>
 <tr>
-<th>Part</th>
-<th>Plan</th>
+<th>Subsystem</th>
+<th>Production architecture</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Apps</td>
-<td>Native iOS (Swift / SwiftUI) and Android (Kotlin / Jetpack Compose) apps, or one React Native code base with native modules for capture and overlays</td>
+<td>Mobile clients</td>
+<td>Native iOS (Swift / SwiftUI) and Android (Kotlin / Jetpack Compose) apps, or React Native with native screen-capture modules</td>
 </tr>
 <tr>
-<td>Sharing one app</td>
-<td>Android: MediaProjection with <strong>single-app capture</strong> (Android 14 QPR2 and later), which excludes other apps and notifications. iOS: ReplayKit broadcast upload extension; because iOS captures the whole screen, the extension must pause capture when the user leaves the chosen app or a notification appears</td>
+<td>Single-app screen sharing</td>
+<td>Android: <code>MediaProjection</code> configured with <code>MediaProjectionConfig.createConfigForUserChoice()</code> (introduced in Android 14 / API 34), allowing the user to share a single app task rather than the full display. iOS: <code>ReplayKit</code> (<code>RPSystemBroadcastPickerView</code> + broadcast upload extension); because iOS broadcasts the system screen, the extension pauses frame transmission when the user leaves the target app or a notification transition occurs</td>
 </tr>
 <tr>
-<td>Live view and marks</td>
-<td>WebRTC video track for the screen, plus a data channel carrying marks as coordinates normalised to the shared screen and tied to a screen "state", so a mark disappears when the screen changes</td>
+<td>Live view and marker sync</td>
+<td>WebRTC video track for the shared app view, paired with a WebRTC data channel sending normalized target coordinates and screen-state identifiers so markers clear automatically when the page changes</td>
 </tr>
 <tr>
-<td>Showing the mark on the older adult's phone</td>
-<td>Android: overlay window (draw-over-apps permission) or accessibility overlay. iOS does not allow drawing over other apps, so the mark and explanation would appear in a Picture-in-Picture panel or require clinic apps to integrate a TogetherStep SDK</td>
+<td>Rendering markers on the older adult's phone</td>
+<td>Android: system overlay window (<code>SYSTEM_ALERT_WINDOW</code>) or accessibility overlay. Because iOS blocks third-party apps from drawing overlays on top of other apps, an iOS build would display guidance in a floating Picture-in-Picture window or require partner clinic apps to bundle a lightweight TogetherStep SDK</td>
 </tr>
 <tr>
-<td>Calls and signalling</td>
-<td>Voice over WebRTC; a small signalling server (for example Node.js or Go with WebSockets) and TURN/STUN servers; family pairing by invitation QR code</td>
+<td>Voice call and signaling</td>
+<td>WebRTC audio channel with automatic local microphone mute on privacy pause; lightweight WebSocket signaling server with STUN/TURN relay and one-time QR family pairing</td>
 </tr>
 <tr>
-<td>Privacy pause</td>
-<td>Trigger on notification events and app switches; nothing is transmitted while paused; no recording is stored on servers</td>
-</tr>
-<tr>
-<td>Recaps</td>
-<td>Generated from the session's step log, edited by the older adult, stored only on her device (encrypted); she decides whether anything is kept</td>
-</tr>
-<tr>
-<td>Accessibility</td>
-<td>Dynamic Type, VoiceOver / TalkBack labels, haptic and spoken confirmations, high-contrast mode, Chinese localisation</td>
+<td>Local recaps</td>
+<td>Built from the session event log, editable by the older adult, and stored locally on the device in encrypted storage</td>
 </tr>
 </tbody>
 </table>
-<h3>Technical considerations and challenges</h3>
+<h3>Key technical challenges</h3>
 <ul>
-<li><strong>Platform limits:</strong> iOS restricts both capturing other apps and drawing over them, so the iOS experience will differ from Android (Picture-in-Picture guidance instead of an overlay ring).</li>
-<li><strong>Latency and stale marks:</strong> a mark made on an old frame must not point at the wrong control after the screen changes; marks are tied to a screen state and cleared on change.</li>
-<li><strong>Different screen sizes and orientations:</strong> marks need normalised coordinates and, ideally, element-level anchoring through accessibility trees.</li>
-<li><strong>Detecting private content:</strong> the system can detect notifications and app switches, but cannot reliably hide private values <em>inside</em> the shared app (for example an ID number on a clinic page).</li>
-<li><strong>Permissions and onboarding:</strong> screen capture and overlay permissions are confusing for older adults; pairing must be done once with a helper present.</li>
-<li><strong>Network and battery:</strong> video sharing uses data and battery; the app should fall back to lower frame rates and to still images on poor connections.</li>
+<li>Operating-system sandboxing on iOS restricts both single-app capture and drawing overlays over other apps, requiring broadcast-extension pause guards and a Picture-in-Picture fallback or partner SDK on iPhones.</li>
+<li>Network latency can cause a helper to tap an outdated frame; tying every marker to a screen-state identifier prevents stale markers from landing on the wrong button after a page transition.</li>
+<li>Different phone sizes and font-scale settings shift button positions, making accessibility-tree element anchoring preferable to raw <code>x, y</code> coordinates where supported.</li>
+<li>While single-app sharing hides other apps and notifications, it cannot automatically redact sensitive text rendered <em>inside</em> the shared app page itself.</li>
 </ul>
-<h2>6. Simulated components</h2>
+<h2>6. Simulated components in the prototype</h2>
 <table>
 <thead>
 <tr>
-<th>Real-world component</th>
-<th>How the prototype simulates it</th>
+<th>Feature</th>
+<th>How it is simulated in this prototype</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Screen sharing / video stream</td>
-<td>Xiaoyu's phone re-renders the same state at about 90% size in a scrollable frame; there is no video</td>
+<td>Live screen sharing</td>
+<td>Xiaoyu's phone renders a synchronized ~91%-scale copy of Mom's clinic view in the browser during active sharing, and omits that DOM completely while paused or ended</td>
 </tr>
 <tr>
-<td>Voice call</td>
-<td>Indicated by "Call on" / "Mic off" controls and Mute; no audio is transmitted</td>
+<td>Voice call and microphone mute</td>
+<td>Represented by the <code>Call on</code> / <code>Mic off</code> and <code>Mute</code> controls and status banners; no live microphone audio is captured</td>
 </tr>
 <tr>
-<td>Community Clinic (third-party app)</td>
-<td>A fictional, hard-coded three-page booking app</td>
+<td><em>Community Clinic</em> app</td>
+<td>Fictional three-screen appointment booking flow built inside the prototype (appointment cancellation/rescheduling is out of scope and stated explicitly)</td>
 </tr>
 <tr>
-<td>Bank SMS notification</td>
-<td>Hard-coded message triggered by a timer or the control bar</td>
+<td>Incoming bank SMS</td>
+<td>Fictional City Bank notification triggered by a timer in Flow 3 or the top toolbar button</td>
 </tr>
 <tr>
-<td>Xiaoyu's replies, availability and partner actions</td>
-<td>Scripted (Wizard-of-Oz auto-play mode) or performed by the reviewer</td>
+<td>Partner actions in single-phone views</td>
+<td>Driven by a Wizard-of-Oz timer script when <code>partner=auto</code> is enabled, or operated manually in the default two-phone view</td>
 </tr>
 <tr>
-<td>Saving recaps</td>
-<td>Browser <code>localStorage</code>; nothing leaves the computer</td>
+<td>Saved recaps</td>
+<td>Stored in browser <code>localStorage</code> on the local machine</td>
 </tr>
 <tr>
-<td>"Hear it again"</td>
-<td>Uses the browser's built-in speech synthesis when available (otherwise a reading notice only)</td>
-</tr>
-<tr>
-<td>Other apps (Chat, Photos)</td>
-<td>Listed so the consent wording can be compared; only Community Clinic has demo content</td>
+<td><code>Hear it again</code> read-aloud</td>
+<td>Uses the browser's Web Speech API (<code>speechSynthesis</code>) when available, with an on-screen speaking indicator</td>
 </tr>
 </tbody>
 </table>
 <h2>7. Limitations and accessibility</h2>
-<p><strong>Limitations</strong></p>
-<ul>
-<li>It is a simulation: no networking, real calls, screen capture, notifications or persistence beyond the browser.</li>
-<li>Only one scenario (confirming a clinic booking) and one helper are modelled; error cases such as a lost connection are not prototyped.</li>
-<li>iOS-style only; Android-specific patterns and the iOS overlay limitation described above are not shown.</li>
-<li>The interface is in English for the course; the target users in mainland China would need a Chinese version.</li>
-<li>Findings that shaped it come from AI-simulated participants and expert-style heuristic evaluation, not from tests with real older adults; real-user testing is the next step.</li>
-</ul>
-<p><strong>Accessibility considerations built in</strong></p>
-<ul>
-<li>Large text (instructions and status 16–21 pt), measured contrast of at least 4.5:1 for all text, primary and safety controls of at least 48 pt (measured with <code>../scripts/a11y_audit.py</code>: no text below 13 px, no contrast failures).</li>
-<li>State is never shown by colour alone: green frame + "Sharing with Xiaoyu", slate frame + pause icon + "Paused"; the helper's mark is a dark-orange outline (about 4.8:1) with a "Xiaoyu marked this" tag.</li>
-<li>Destructive actions (ending help on either phone, discarding or deleting a note) ask first, with the safe choice as the default; Pause and End help are always visible while sharing.</li>
-<li>Audio is part of the privacy model: Mom's microphone is muted while paused and she is told not to read codes aloud.</li>
-<li>Plain language without technical terms; the helper must explain the <em>result</em> of a step, not only where to tap; the explanation can be read aloud.</li>
-<li>Buttons have text labels; decorative illustrations use empty <code>alt</code> text.</li>
-</ul>
-<p><strong>Known accessibility gaps:</strong> no real screen-reader testing was performed; the browser prototype does not support Dynamic Type scaling or system dark mode; the measured audits <code>../process-materials/03-heuristic-evaluation/accessibility-audit-mid-fidelity.md</code> and <code>../process-materials/04-interactive-high-fidelity-prototyping/accessibility-audit-high-fidelity.md</code> list remaining items.</p></body></html>
+<p>Current prototype limitations:
+- All networking, phone calls, OS screen-capture permissions, and third-party app states are simulated in the browser around a single clinic-booking scenario.
+- Graphical-design-tool source file compliance (creating a native Figma file rather than a coded web prototype plus exported frames and <code>figma-build-spec.json</code>) remains deferred.
+- The interface follows iOS visual conventions and is written in English for coursework evaluation; a production release for older adults in China would require Chinese localization and Android Material adaptations.
+- Our iterative refinements were informed by Think Aloud sessions on the paper-style prototype and five heuristic evaluation perspectives on the medium-fidelity prototype; field testing with older adults and family helpers on physical phones is the next step.</p>
+<p>Built-in accessibility measures:
+- Body copy, privacy assurances, sharing-bar status, call/microphone pills, helper status cards, and tool labels are 17 CSS px (instructions and headings 20-32 CSS px); supporting hints, chips, and Clinic sublabels are 16 CSS px. Across the 14-state automated audit (<code>../scripts/a11y_audit.py</code>), there are <strong>0</strong> text contrast failures, <strong>0</strong> controls under 44 CSS px, <strong>0</strong> unnamed controls, <strong>0</strong> text nodes below 13 CSS px, and only <strong>5</strong> simulated status-bar/checkmark glyphs at 13-15 CSS px. Primary <code>Pause</code> / <code>End help</code> controls are 50 CSS px tall; only the two scaled links (<code>Change time</code>, <code>‹ Back</code>) inside Xiaoyu's ~0.91x mirror measure 44 CSS px high (below the 48 px team token, expanded via hit-area padding in Point mode).
+- Semantic privacy on pause and end (<code>V53</code>): when sharing is paused or ended, the mirrored Clinic markup is removed from Xiaoyu's DOM rather than merely covered visually, and keyboard focus moves to the pause/end status heading so assistive technologies cannot read hidden Clinic content.
+- System state never relies on color alone: active sharing pairs a green border with "Sharing with Xiaoyu", paused sharing pairs a slate border with a pause icon and "Paused", and the helper's marker pairs a stable 5 px dark-orange outline (<code>#B45309</code>, measured 4.81:1 against <code>#FAFAFA</code>) with a visible <code>Xiaoyu marked this</code> pill linked via <code>aria-describedby</code>.
+- Destructive actions (ending help on either phone, discarding a recap, deleting a saved note) ask for confirmation with the safe option highlighted as default, and <code>Pause</code> / <code>End help</code> remain visible at the top of every shared screen.
+- During an automatic privacy pause, Mom's microphone is muted by default and the screen warns her never to read verification codes aloud.
+- Remaining accessibility gaps: browser DOM checks do not substitute for testing with native mobile screen readers (VoiceOver / TalkBack) or real voice-call audio, and the fixed 393 x 852 px frame does not dynamically reflow for OS-level Dynamic Type scaling (<code>../process-materials/04-interactive-high-fidelity-prototyping/accessibility-audit-high-fidelity.md</code>).</p></body></html>

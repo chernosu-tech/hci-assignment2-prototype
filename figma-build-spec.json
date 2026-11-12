@@ -1,19 +1,19 @@
 {
   "project": "TogetherStep — Graduate Team 7, CSC5056 Assignment 2",
-  "purpose": "Specification for recreating the TogetherStep prototype in Figma (frames, tokens, components, prototype links). The working reference implementation is the HTML prototype in prototype/hi-fi; exported 2x PNGs of every frame are in prototype/screens/.",
-  "device": { "name": "iPhone 15 / 16", "frame": [393, 852], "unit": "pt", "safeArea": { "top": 54, "bottom": 34 }, "conventions": "iOS 18: status bar, navigation bar, tab bar, home indicator" },
+  "purpose": "Design specification for the TogetherStep high-fidelity prototype (frames, tokens, components, and state links). The runnable reference implementation is prototype/hi-fi; exported 2x PNG frames of all 26 states are in prototype/screens/. Note: this JSON specification accompanies the web prototype and is not a native Figma file.",
+  "device": { "name": "iPhone 15 / 16", "frame": [393, 852], "unit": "pt", "safeArea": { "top": 54, "bottom": 34 }, "conventions": "iOS 18: status bar with Dynamic Island, navigation bar, bottom tab bar, sheets, alerts, home indicator" },
   "tokens": {
     "color": {
       "primary": "#1E56A0", "primaryDark": "#163F77", "marker": "#B45309",
       "safe": "#2E7D32", "paused": "#334155", "pausedFill": "#E2E8F0",
       "warningText": "#78350F", "warningFill": "#FEF3C7",
-      "danger": "#B91C1C", "surface": "#FAFAFA", "card": "#FFFFFF", "text": "#1A1A1A", "text2": "#4B5563",
+      "danger": "#B91C1C", "surface": "#FAFAFA", "card": "#FFFFFF", "text": "#1A1A1A", "text2": "#374151",
       "clinicBrand": "#0F766E"
     },
     "type": {
       "title": { "size": 32, "weight": 700 }, "heading": { "size": 22, "weight": 700 },
-      "instruction": { "size": 21, "weight": 600 }, "body": { "size": 17, "lineHeight": 1.45 },
-      "button": { "size": 19, "weight": 600 }, "caption": { "size": 15 }
+      "instruction": { "size": 20, "weight": 600 }, "body": { "size": 17, "lineHeight": 1.45 },
+      "button": { "size": 19, "weight": 600 }, "secondary": { "size": 16 }
     },
     "radius": { "card": 16, "button": 14, "sheet": 22, "chip": 22 },
     "space": [4, 8, 12, 16, 20, 24],
@@ -23,8 +23,8 @@
     "00 Cover & Overview",
     "01 Foundations & Tokens",
     "02 Components",
-    "03 Low-Fi & Paper Sketches",
-    "04 Mid-Fi Prototype (HE frozen, commit 075fcc6)",
+    "03 Low-Fi & Annotated Sketches",
+    "04 Mid-Fi Prototype",
     "05 High-Fi Final Prototype"
   ],
   "components": [
@@ -32,18 +32,18 @@
     { "name": "Button/Secondary", "props": ["label"] },
     { "name": "Button/Destructive", "props": ["label"] },
     { "name": "HelperCard", "props": ["name", "relation", "availability"] },
-    { "name": "AppChoiceRow", "props": ["appName", "icon", "selected", "disabled"] },
-    { "name": "SharingBar", "props": ["state: live|paused", "presenceText"] },
+    { "name": "AppChoiceRow", "props": ["appName", "icon", "selected", "supported"] },
+    { "name": "SharingBar", "props": ["state: live|paused", "micMuted", "presenceText"] },
     { "name": "SharingFrame", "props": ["state: live|paused"] },
-    { "name": "MarkerRing", "props": [] },
+    { "name": "MarkerRing", "props": ["label: Xiaoyu marked this"] },
     { "name": "ExplanationCard", "props": ["helperName", "message", "collapsed"] },
     { "name": "ScopeChip", "props": ["state: live|paused|ended"] },
     { "name": "PhraseChip", "props": ["label", "selected"] },
-    { "name": "PausedCard", "props": ["reason: private|manual"] },
-    { "name": "RecapCard", "props": ["steps[]", "editing"] },
+    { "name": "PausedCard", "props": ["reason: private|manual", "momMuted", "helperMuted"] },
+    { "name": "RecapCard", "props": ["title", "steps[]", "lastTimeNote", "editing"] },
     { "name": "Toast", "props": ["text"] },
     { "name": "Alert", "props": ["title", "message", "primary", "secondary"] },
-    { "name": "NotificationBanner", "props": ["app", "message"] },
+    { "name": "NotificationBanner", "props": ["app", "message", "placement: top|inline"] },
     { "name": "iOS/StatusBar", "props": [] },
     { "name": "iOS/TabBar", "props": ["active: help|mysteps"] }
   ],
@@ -60,6 +60,7 @@
     { "id": "M01", "phone": "helper", "name": "Point mode", "flow": "moderate" },
     { "id": "M02", "phone": "helper", "name": "Explain sheet", "flow": "moderate" },
     { "id": "M03", "phone": "older adult", "name": "Marked step + explanation", "flow": "moderate" },
+    { "id": "M03h", "phone": "helper", "name": "Waiting after sending mark", "flow": "moderate" },
     { "id": "M03a", "phone": "older adult", "name": "Ask Xiaoyu sheet", "flow": "moderate" },
     { "id": "M04", "phone": "older adult", "name": "Booking confirmed", "flow": "moderate" },
     { "id": "M04h", "phone": "helper", "name": "Result", "flow": "moderate" },
@@ -68,6 +69,7 @@
     { "id": "C03", "phone": "helper", "name": "Paused placeholder", "flow": "complex" },
     { "id": "C04a", "phone": "older adult", "name": "End help confirmation", "flow": "complex" },
     { "id": "C04", "phone": "older adult", "name": "Recap (edit / save / don't save)", "flow": "complex" },
+    { "id": "C04e", "phone": "older adult", "name": "Recap editing", "flow": "complex" },
     { "id": "C05", "phone": "older adult", "name": "Saved", "flow": "complex" },
     { "id": "C05h", "phone": "helper", "name": "Help ended", "flow": "complex" },
     { "id": "C06", "phone": "older adult", "name": "My steps", "flow": "complex" },
@@ -75,29 +77,30 @@
   ],
   "prototypeLinks": [
     { "from": "S01", "trigger": "tap 'Ask Xiaoyu for help'", "to": "S02" },
-    { "from": "S02", "trigger": "tap app row, then 'Next'", "to": "S03" },
+    { "from": "S02", "trigger": "tap 'Community Clinic', then 'Next'", "to": "S03" },
     { "from": "S02", "trigger": "tap 'Cancel'", "to": "S01" },
-    { "from": "S03", "trigger": "tap 'Start sharing'", "to": "S03b", "alsoUpdates": { "H00": "H01" } },
+    { "from": "S03", "trigger": "tap 'Call Xiaoyu and share'", "to": "S03b", "alsoUpdates": { "H00": "H01" } },
     { "from": "S03b", "trigger": "tap 'Cancel request'", "to": "S01" },
     { "from": "H01", "trigger": "tap 'Join'", "to": "H02", "alsoUpdates": { "S03b": "S04" } },
     { "from": "S04", "trigger": "tap 'Continue'", "to": "M00" },
     { "from": "H02", "trigger": "tap 'Point'", "to": "M01" },
     { "from": "M01", "trigger": "tap 'Confirm booking' on the mirror", "to": "M02" },
-    { "from": "M02", "trigger": "select phrase(s), tap 'Send to Mom'", "to": "H02", "alsoUpdates": { "M00": "M03" } },
+    { "from": "M02", "trigger": "select phrase(s), tap 'Send to Mom'", "to": "M03h", "alsoUpdates": { "M00": "M03" } },
     { "from": "M03", "trigger": "tap 'Ask Xiaoyu'", "to": "M03a" },
-    { "from": "M03", "trigger": "tap 'Confirm booking'", "to": "M04", "alsoUpdates": { "H02": "M04h" } },
+    { "from": "M03", "trigger": "tap 'Confirm booking'", "to": "M04", "alsoUpdates": { "M03h": "M04h" } },
     { "from": "M04", "trigger": "event: bank SMS arrives (after delay)", "to": "C01", "alsoUpdates": { "M04h": "C03" } },
-    { "from": "C01", "trigger": "tap 'Resume sharing'", "to": "S04" },
-    { "from": "C01", "trigger": "tap 'See steps so far'", "to": "C02" },
+    { "from": "C01", "trigger": "tap 'Resume sharing'", "to": "M04" },
+    { "from": "C01", "trigger": "tap 'Steps so far'", "to": "C02" },
     { "from": "C01", "trigger": "tap 'End help'", "to": "C04a" },
     { "from": "C04a", "trigger": "tap 'End help'", "to": "C04", "alsoUpdates": { "C03": "C05h" } },
     { "from": "C04", "trigger": "tap 'Save to My steps'", "to": "C05" },
+    { "from": "C05", "trigger": "tap 'Open saved note'", "to": "C07" },
     { "from": "C05", "trigger": "tap 'Back to home', then tab 'My steps'", "to": "C06" },
     { "from": "C06", "trigger": "tap saved recap", "to": "C07" }
   ],
   "importOptions": [
-    "Fastest: in Figma, create frames of 393x852 and place the 2x PNGs from prototype/screens/ (scaled 50%), then add hotspots following prototypeLinks (Prototype tab: On tap -> Navigate to, Smart animate 300 ms ease-out).",
-    "Editable layers: host prototype/hi-fi online and import each state with the html.to.design plugin (recommended in the team guide), then link frames as above.",
-    "Rebuild: create the components above with Auto Layout and variables from 'tokens', then assemble frames."
+    "Frame import: in Figma, create 393x852 frames and place the 2x PNGs from prototype/screens/ (scaled 50%), then wire interactions using prototypeLinks.",
+    "Editable layers: import each state of prototype/hi-fi with html.to.design, then connect frame transitions.",
+    "Component rebuild: define variables from tokens and Auto Layout components, then assemble the 26 frames."
   ]
 }

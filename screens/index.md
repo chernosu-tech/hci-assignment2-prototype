@@ -1,6 +1,6 @@
-# hi-fi screens
+# hi-fi Screen Evidence
 
-Exported by `scripts/capture_screens.py`.
+Each image shows one role at a key task state, at twice the 393 × 852 phone-frame resolution. S02 includes a deliberate Clinic selection; it is not a fresh-picker default. Static captures support layout observations; interaction claims require their own steps and checks.
 
 - [S01 · Mom · home](S01-mom-home.png)
 - [H00 · Xiaoyu · home](H00-xiaoyu-home.png)
